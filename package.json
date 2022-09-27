@@ -1,20 +1,13 @@
 {
-  "name": "spotify-web-api-node",
-  "version": "5.0.2",
-  "homepage": "https://github.com/thelinmichael/spotify-web-api-node",
+  "name": "@lumiastream/spotify-cove",
+  "version": "5.0.3",
+  "homepage": "https://github.com/lumiastream/spotify-cove",
   "description": "A Node.js wrapper for Spotify's Web API",
   "main": "./src/server.js",
-  "author": "Michael Thelin",
-  "contributors": [
-    {
-      "name": "José M. Perez",
-      "url": "https://github.com/JMPerez"
-    }
-  ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/thelinmichael/spotify-web-api-node.git"
+    "url": "https://github.com/lumiastream/spotify-cove.git"
   },
   "scripts": {
     "test": "jest",

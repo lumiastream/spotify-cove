@@ -1194,7 +1194,7 @@ describe('Spotify Web API', () => {
       });
       callback(null, {
         body: {
-          uri: 'spotify:user:thelinmichael'
+          uri: 'spotify:user:lumiastream'
         }
       });
     });
@@ -1204,7 +1204,7 @@ describe('Spotify Web API', () => {
     });
 
     api.getMe().then(function(data) {
-      expect('spotify:user:thelinmichael').toBe(data.body.uri);
+      expect('spotify:user:lumiastream').toBe(data.body.uri);
       done();
     });
   });
@@ -1223,7 +1223,7 @@ describe('Spotify Web API', () => {
       });
       callback(null, {
         body: {
-          uri: 'spotify:user:thelinmichael'
+          uri: 'spotify:user:lumiastream'
         }
       });
     });
@@ -1232,7 +1232,7 @@ describe('Spotify Web API', () => {
     api.setAccessToken('someAccessToken');
 
     api.getMe().then(function(data) {
-      expect('spotify:user:thelinmichael').toBe(data.body.uri);
+      expect('spotify:user:lumiastream').toBe(data.body.uri);
       done();
     });
   });
@@ -1246,17 +1246,17 @@ describe('Spotify Web API', () => {
     ) {
       expect(method).toBe(superagent.get);
       expect(uri).toBe(
-        'https://api.spotify.com/v1/users/thelinmichael/playlists'
+        'https://api.spotify.com/v1/users/lumiastream/playlists'
       );
       expect(options.query).toBeFalsy();
       callback(null, {
         body: {
           items: [
             {
-              uri: 'spotify:user:thelinmichael:playlist:5ieJqeLJjjI8iJWaxeBLuK'
+              uri: 'spotify:user:lumiastream:playlist:5ieJqeLJjjI8iJWaxeBLuK'
             },
             {
-              uri: 'spotify:user:thelinmichael:playlist:3EsfV6XzCHU8SPNdbnFogK'
+              uri: 'spotify:user:lumiastream:playlist:3EsfV6XzCHU8SPNdbnFogK'
             }
           ]
         },
@@ -1267,7 +1267,7 @@ describe('Spotify Web API', () => {
     var api = new SpotifyWebApi();
     api.setAccessToken('myVeryLongAccessToken');
 
-    api.getUserPlaylists('thelinmichael').then(function(data) {
+    api.getUserPlaylists('lumiastream').then(function(data) {
       expect(2).toBe(data.body.items.length);
       expect(data.statusCode).toBe(200);
       done();
@@ -1288,10 +1288,10 @@ describe('Spotify Web API', () => {
         body: {
           items: [
             {
-              uri: 'spotify:user:thelinmichael:playlist:5ieJqeLJjjI8iJWaxeBLuK'
+              uri: 'spotify:user:lumiastream:playlist:5ieJqeLJjjI8iJWaxeBLuK'
             },
             {
-              uri: 'spotify:user:thelinmichael:playlist:3EsfV6XzCHU8SPNdbnFogK'
+              uri: 'spotify:user:lumiastream:playlist:3EsfV6XzCHU8SPNdbnFogK'
             }
           ]
         },
@@ -1323,10 +1323,10 @@ describe('Spotify Web API', () => {
         body: {
           items: [
             {
-              uri: 'spotify:user:thelinmichael:playlist:5ieJqeLJjjI8iJWaxeBLuK'
+              uri: 'spotify:user:lumiastream:playlist:5ieJqeLJjjI8iJWaxeBLuK'
             },
             {
-              uri: 'spotify:user:thelinmichael:playlist:3EsfV6XzCHU8SPNdbnFogK'
+              uri: 'spotify:user:lumiastream:playlist:3EsfV6XzCHU8SPNdbnFogK'
             }
           ]
         },
@@ -2674,7 +2674,7 @@ describe('Spotify Web API', () => {
       expect(uri).toBe('https://api.spotify.com/v1/me/following');
       expect(options.query).toEqual({
         type: 'user',
-        ids: 'thelinmichael,wizzler'
+        ids: 'lumiastream,wizzler'
       });
       expect(options.data).toBeFalsy();
       callback();
@@ -2686,7 +2686,7 @@ describe('Spotify Web API', () => {
       accessToken: accessToken
     });
 
-    api.followUsers(['thelinmichael', 'wizzler']).then(
+    api.followUsers(['lumiastream', 'wizzler']).then(
       function(data) {
         done();
       },
@@ -2708,7 +2708,7 @@ describe('Spotify Web API', () => {
       expect(uri).toBe('https://api.spotify.com/v1/me/following');
       expect(options.query).toEqual({
         type: 'user',
-        ids: 'thelinmichael,wizzler'
+        ids: 'lumiastream,wizzler'
       });
       expect(options.data).toBeFalsy();
       callback();
@@ -2720,7 +2720,7 @@ describe('Spotify Web API', () => {
       accessToken: accessToken
     });
 
-    api.followUsers(['thelinmichael', 'wizzler'], function(err, data) {
+    api.followUsers(['lumiastream', 'wizzler'], function(err, data) {
       expect(err).toBeFalsy();
       done();
     });
@@ -2799,7 +2799,7 @@ describe('Spotify Web API', () => {
       expect(uri).toBe('https://api.spotify.com/v1/me/following');
       expect(options.query).toEqual({
         type: 'user',
-        ids: 'thelinmichael,wizzler'
+        ids: 'lumiastream,wizzler'
       });
       expect(options.data).toBeFalsy();
       callback();
@@ -2811,7 +2811,7 @@ describe('Spotify Web API', () => {
       accessToken: accessToken
     });
 
-    api.unfollowUsers(['thelinmichael', 'wizzler']).then(
+    api.unfollowUsers(['lumiastream', 'wizzler']).then(
       function(data) {
         done();
       },
@@ -2833,7 +2833,7 @@ describe('Spotify Web API', () => {
       expect(uri).toBe('https://api.spotify.com/v1/me/following');
       expect(options.query).toEqual({
         type: 'user',
-        ids: 'thelinmichael,wizzler'
+        ids: 'lumiastream,wizzler'
       });
       expect(options.data).toBeFalsy();
       callback();
@@ -2845,7 +2845,7 @@ describe('Spotify Web API', () => {
       accessToken: accessToken
     });
 
-    api.unfollowUsers(['thelinmichael', 'wizzler'], function(err, data) {
+    api.unfollowUsers(['lumiastream', 'wizzler'], function(err, data) {
       done();
     });
   });
@@ -2924,7 +2924,7 @@ describe('Spotify Web API', () => {
       expect(uri).toBe('https://api.spotify.com/v1/me/following/contains');
       expect(options.query).toEqual({
         type: 'user',
-        ids: 'thelinmichael,wizzler'
+        ids: 'lumiastream,wizzler'
       });
       expect(options.data).toBeFalsy();
       callback(null, { body: [true, false] });
@@ -2936,7 +2936,7 @@ describe('Spotify Web API', () => {
       accessToken: accessToken
     });
 
-    api.isFollowingUsers(['thelinmichael', 'wizzler']).then(
+    api.isFollowingUsers(['lumiastream', 'wizzler']).then(
       function(data) {
         expect(data.body).toEqual([true, false]);
         done();
@@ -2959,7 +2959,7 @@ describe('Spotify Web API', () => {
       expect(uri).toBe('https://api.spotify.com/v1/me/following/contains');
       expect(options.query).toEqual({
         type: 'user',
-        ids: 'thelinmichael,wizzler'
+        ids: 'lumiastream,wizzler'
       });
       expect(options.data).toBeFalsy();
       callback(null, { body: [true, false] });
@@ -2971,7 +2971,7 @@ describe('Spotify Web API', () => {
       accessToken: accessToken
     });
 
-    api.isFollowingUsers(['thelinmichael', 'wizzler'], function(err, data) {
+    api.isFollowingUsers(['lumiastream', 'wizzler'], function(err, data) {
       expect(err).toBeFalsy();
       expect(data.body).toEqual([true, false]);
       done();
@@ -3124,7 +3124,7 @@ describe('Spotify Web API', () => {
         'https://api.spotify.com/v1/users/spotify_germany/playlists/2nKFnGNFvHX9hG5Kv7Bm3G/followers/contains'
       );
       expect(options.query).toEqual({
-        ids: 'thelinmichael,ella'
+        ids: 'lumiastream,ella'
       });
       expect(options.data).toBeFalsy();
       callback(null, { body: [true, false] });
@@ -3138,7 +3138,7 @@ describe('Spotify Web API', () => {
 
     api
       .areFollowingPlaylist('spotify_germany', '2nKFnGNFvHX9hG5Kv7Bm3G', [
-        'thelinmichael',
+        'lumiastream',
         'ella'
       ])
       .then(

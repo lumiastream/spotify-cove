@@ -31,15 +31,15 @@ var _getParametersFromRequest = function(request) {
 };
 
 var _toError = function(response) {
-  if (typeof response.body === 'object' && response.body.error && typeof response.body.error === 'object' && response.body.error.reason) {
+  if (typeof response.body === 'object' && response.body?.error && typeof response.body.error === 'object' && response.body.error?.reason) {
     return new WebapiPlayerError(response.body, response.headers, response.statusCode);
   }
 
-  if (typeof response.body === 'object' && response.body.error && typeof response.body.error === 'object') {
+  if (typeof response.body === 'object' && response.body?.error && typeof response.body.error === 'object') {
     return new WebapiRegularError(response.body, response.headers, response.statusCode);
   }
 
-  if (typeof response.body === 'object' && response.body.error && typeof response.body.error === 'string') {
+  if (typeof response.body === 'object' && response.body?.error && typeof response.body.error === 'string') {
     return new WebapiAuthenticationError(response.body, response.headers, response.statusCode);
   }
   
