@@ -230,6 +230,33 @@ SpotifyWebApi.prototype = {
       .execute(HttpManager.get, callback);
   },
 
+  getPlaylistCoverImage: function (playlistId, callback) {
+    return WebApiRequest.builder(this.getAccessToken())
+      .withPath("/v1/playlists/" + playlistId + "/images")
+      .withHeaders({ "Content-Type": 'application/json' })
+      .build()
+      .execute(HttpManager.get, callback);
+  },
+
+  addToPlaybackQueue: function (uri, callback) {
+    var baseUrl = "/v1/me"
+    var path = "/player/queue"
+    return WebApiRequest.builder(this.getAccessToken())
+      .withPath(baseUrl + path)
+      .withQueryParameters({ uri: uri })
+      .build()
+      .execute(HttpManager.post, callback);
+  },
+
+  getAvailableMarkets: function (callback) {
+    var path = "/v1/markets"
+    return WebApiRequest.builder(this.getAccessToken())
+      .withPath(path)
+      .withHeaders({ 'Content-Type': 'application/json' })
+      .build()
+      .execute(HttpManager.get, callback);
+  },
+
   /**
    * Search for music entities of certain types.
    * @param {string} query The search query.
