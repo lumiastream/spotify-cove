@@ -418,7 +418,7 @@ spotifyApi.getPlaylist('5ieJqeLJjjI8iJWaxeBLuK')
   });
 
 // Get a user's playlists
-spotifyApi.getUserPlaylists('thelinmichael')
+spotifyApi.getUserPlaylists('lumiastream')
   .then(function(data) {
     console.log('Retrieved playlists', data.body);
   },function(err) {
@@ -518,7 +518,7 @@ spotifyApi.unfollowPlaylist('5ieJqeLJjjI8iJWaxeBLuK')
   });
 
 // Check if Users are following a Playlist
-spotifyApi.areFollowingPlaylist('5ieJqeLJjjI8iJWaxeBLuK', ['thelinmichael', 'ella'])
+spotifyApi.areFollowingPlaylist('5ieJqeLJjjI8iJWaxeBLuK', ['lumiastream', 'ella'])
  .then(function(data) {
     data.body.forEach(function(isFollowing) {
       console.log("User is following: " + isFollowing);
@@ -541,7 +541,7 @@ spotifyApi.getFollowedArtists({ limit : 1 })
   });
 
 /* Follow a user */
-spotifyApi.followUsers(['thelinmichael'])
+spotifyApi.followUsers(['lumiastream'])
   .then(function(data) {
      console.log(data);
   }, function(err) {
@@ -557,7 +557,7 @@ spotifyApi.followArtists(['2hazSY4Ef3aB9ATXW7F5w3', '6J6yx1t3nwIDyPXk5xa7O8'])
   });
 
 /* Unfollow a user */
-spotifyApi.unfollowUsers(['thelinmichael'])
+spotifyApi.unfollowUsers(['lumiastream'])
   .then(function(data) {
      console.log(data);
   }, function(err) {
@@ -573,7 +573,7 @@ spotifyApi.unfollowArtists(['2hazSY4Ef3aB9ATXW7F5w3', '6J6yx1t3nwIDyPXk5xa7O8'])
   });
 
 /* Check if a user is following a user */
-let usersId = ['thelinmichael'];
+let usersId = ['lumiastream'];
 
 spotifyApi.isFollowingUsers(usersId)
   .then(function(data) {
@@ -824,6 +824,15 @@ spotifyApi.getMyRecentlyPlayedTracks({
 spotifyApi.getMyCurrentPlayingTrack()
   .then(function(data) {
     console.log('Now playing: ' + data.body.item.name);
+  }, function(err) {
+    console.log('Something went wrong!', err);
+  });
+
+// Get the User's Queue + Current Playing Track 
+spotifyApi.getMyQueue()
+  .then(function(data) {
+    console.log('Now playing: ' + data.body.currently_playing.name);
+    console.log('Queue length: ' + data.body.queue.length());
   }, function(err) {
     console.log('Something went wrong!', err);
   });
@@ -1238,7 +1247,7 @@ api
 
 ## Development
 
-See something you think can be improved? [Open an issue](https://github.com/thelinmichael/spotify-web-api-node/issues/new) or clone the project and send a pull request with your changes.
+See something you think can be improved? [Open an issue](https://github.com/lumiastream/spotify-cove/issues/new) or clone the project and send a pull request with your changes.
 
 ### Running tests
 

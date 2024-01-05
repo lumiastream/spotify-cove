@@ -218,6 +218,46 @@ SpotifyWebApi.prototype = {
   },
 
   /**
+   * Get the User’s Queue.
+   * @param {requestCallback} [callback] Optional callback method to be called instead of the promise.
+   * @returns {Promise|undefined} A promise that if successful, resolves into a paging object of tracks,
+   *          otherwise an error. Not returned if a callback is given.
+   */
+   getMyQueue: function(  callback) {
+    return WebApiRequest.builder(this.getAccessToken())
+      .withPath('/v1/me/player/queue')
+      .build()
+      .execute(HttpManager.get, callback);
+  },
+
+  getPlaylistCoverImage: function (playlistId, callback) {
+    return WebApiRequest.builder(this.getAccessToken())
+      .withPath("/v1/playlists/" + playlistId + "/images")
+      .withHeaders({ "Content-Type": 'application/json' })
+      .build()
+      .execute(HttpManager.get, callback);
+  },
+
+  addToPlaybackQueue: function (uri, callback) {
+    var baseUrl = "/v1/me"
+    var path = "/player/queue"
+    return WebApiRequest.builder(this.getAccessToken())
+      .withPath(baseUrl + path)
+      .withQueryParameters({ uri: uri })
+      .build()
+      .execute(HttpManager.post, callback);
+  },
+
+  getAvailableMarkets: function (callback) {
+    var path = "/v1/markets"
+    return WebApiRequest.builder(this.getAccessToken())
+      .withPath(path)
+      .withHeaders({ 'Content-Type': 'application/json' })
+      .build()
+      .execute(HttpManager.get, callback);
+  },
+
+  /**
    * Search for music entities of certain types.
    * @param {string} query The search query.
    * @param {string[]} types An array of item types to search across.
@@ -374,7 +414,7 @@ SpotifyWebApi.prototype = {
    * Get information about a user.
    * @param userId The user ID.
    * @param {requestCallback} [callback] Optional callback method to be called instead of the promise.
-   * @example getUser('thelinmichael').then(...)
+   * @example getUser('lumiastream').then(...)
    * @returns {Promise|undefined} A promise that if successful, resolves to an object
    *          containing information about the user. If the promise is
    *          rejected, it contains an error object. Not returned if a callback is given.
@@ -409,7 +449,7 @@ SpotifyWebApi.prototype = {
    * the permissions will be used.
    * @param {Object} [options] The options supplied to this request.
    * @param {requestCallback} [callback] Optional callback method to be called instead of the promise.
-   * @example getUserPlaylists('thelinmichael').then(...)
+   * @example getUserPlaylists('lumiastream').then(...)
    * @returns {Promise|undefined} A promise that if successful, resolves to an object containing
    *          a list of playlists. If rejected, it contains an error object. Not returned if a callback is given.
    */
@@ -1225,7 +1265,7 @@ SpotifyWebApi.prototype = {
    * Add the current user as a follower of one or more other Spotify users.
    * @param {string[]} userIds The IDs of the users to be followed.
    * @param {requestCallback} [callback] Optional callback method to be called instead of the promise.
-   * @example followUsers(['thelinmichael', 'wizzler']).then(...)
+   * @example followUsers(['lumiastream', 'wizzler']).then(...)
    * @returns {Promise|undefined} A promise that if successful, simply resolves to an empty object. If rejected,
    *          it contains an error object. Not returned if a callback is given.
    */
@@ -1263,7 +1303,7 @@ SpotifyWebApi.prototype = {
    * Remove the current user as a follower of one or more other Spotify users.
    * @param {string[]} userIds The IDs of the users to be unfollowed.
    * @param {requestCallback} [callback] Optional callback method to be called instead of the promise.
-   * @example unfollowUsers(['thelinmichael', 'wizzler']).then(...)
+   * @example unfollowUsers(['lumiastream', 'wizzler']).then(...)
    * @returns {Promise|undefined} A promise that if successful, simply resolves to an empty object. If rejected,
    *          it contains an error object. Not returned if a callback is given.
    */
@@ -1301,7 +1341,7 @@ SpotifyWebApi.prototype = {
    * Check to see if the current user is following one or more other Spotify users.
    * @param {string[]} userIds The IDs of the users to check if are followed by the current user.
    * @param {requestCallback} [callback] Optional callback method to be called instead of the promise.
-   * @example isFollowingUsers(['thelinmichael', 'wizzler']).then(...)
+   * @example isFollowingUsers(['lumiastream', 'wizzler']).then(...)
    * @returns {Promise|undefined} A promise that if successful, resolves into an array of booleans. The order
    *          of the returned array's elements correspond to the users IDs in the request.
    *          The boolean value of true indicates that the user is following that user, otherwise is not.
