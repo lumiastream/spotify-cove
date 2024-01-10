@@ -1,6 +1,6 @@
 {
   "name": "@lumiastream/spotify-cove",
-  "version": "6.0.0-alpha.1",
+  "version": "6.0.0`",
   "homepage": "https://github.com/lumiastream/spotify-cove",
   "description": "A Node.js wrapper for Spotify's Web API",
   "main": "./src/server.js",
