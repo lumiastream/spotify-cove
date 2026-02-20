@@ -44,7 +44,22 @@ var _getParametersFromRequest = function (request) {
  * @param {Response} response
  */
 var _toError = async function (response) {
-  const body = await response.json();
+  let body;
+  try {
+    body = await response.json();
+  } catch (e) {
+    // If response is not valid JSON, try to get text for debugging
+    let text;
+    try {
+      text = await response.text();
+    } catch (err) {
+      text = null;
+    }
+    body = {
+      error: 'invalid_json',
+      message: text || 'Response is not valid JSON'
+    };
+  }
 
   if (
     typeof body === 'object' &&
