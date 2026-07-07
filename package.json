@@ -1,5 +1,5 @@
 {
-  "name": "@lumiastream/spotify-cove",
+  "name": "@lumiapriv/spotify-cove",
   "version": "7.0.1",
   "homepage": "https://github.com/lumiastream/spotify-cove",
   "description": "A Node.js wrapper for Spotify's Web API",
